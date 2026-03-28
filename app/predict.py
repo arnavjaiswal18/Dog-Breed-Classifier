@@ -10,15 +10,15 @@ from tensorflow.keras.models import load_model
 # ------------------------------------
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MODEL_PATH = PROJECT_ROOT / "model" / "weights" / "model.h5"
-TRAIN_SPLIT_DIR = PROJECT_ROOT / "data" / "train_split"
+CLASS_NAMES_PATH = Path(__file__).resolve().parent / "class_names.json"
 
 # Lazy-load model (only when predict_image is called)
 model = None
 
-# Load class names (only directories, not files)
-CLASS_NAMES = sorted(
-    entry.name for entry in TRAIN_SPLIT_DIR.iterdir() if entry.is_dir()
-)
+import json
+# Load class names from JSON
+with open(CLASS_NAMES_PATH, "r") as f:
+    CLASS_NAMES = json.load(f)
 
 
 def get_model():
