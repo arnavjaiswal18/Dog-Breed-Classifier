@@ -1,0 +1,29 @@
+# Ignore virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Ignore Git files
+.git/
+.gitignore
+
+# Ignore caches and compiled binaries
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore local datasets to keep Docker image small
+data/
+uploads/
+temp/
+tmp/
+
+# Ignore metadata
+*.md
