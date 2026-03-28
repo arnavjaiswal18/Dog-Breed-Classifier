@@ -205,3 +205,33 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Dog Breed Classifier Project-Specific
+# Model weights (files are too large for Git)
+model/weights/
+*.h5
+*.pkl
+*.pth
+
+# Uploads and temporary files
+uploads/
+temp/
+tmp/
+*.tmp
+
+# Data (optional - if files are large)
+data/test/
+data/train/
+data/train_split/
+data/valid/
+app/main.py
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~

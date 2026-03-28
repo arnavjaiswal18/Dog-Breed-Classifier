@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Breed Classifier</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input {
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        img {
+            margin-top: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🐶 Dog Breed Classifier</h1>
+
+    <div class="container">
+        <input type="file" id="fileInput">
+        <br>
+        <button onclick="uploadImage()">Predict</button>
+
+        <div id="result"></div>
+        <img id="preview" />
+    </div>
+
+<script>
+function uploadImage() {
+    let fileInput = document.getElementById("fileInput");
+    let file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select an image!");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    // Show preview
+    document.getElementById("preview").src = URL.createObjectURL(file);
+
+    fetch("/predict", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerHTML =
+            `<h2>Breed: ${data.breed}</h2>
+             <h3>Confidence: ${data.confidence}</h3>`;
+    })
+    .catch(error => console.error(error));
+}
+</script>
+
+</body>
+</html>
