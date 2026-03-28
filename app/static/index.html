@@ -388,11 +388,12 @@
                         body: formData
                     });
 
-                    if (!response.ok) {
-                        throw new Error('Prediction failed');
-                    }
-
+                    // Even on 500 scale we want to parse the JSON error
                     const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Prediction failed with status: ' + response.status);
+                    }
                     
                     if (data.error) {
                         setError(data.error);
