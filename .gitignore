@@ -208,8 +208,8 @@ __marimo__/
 
 # Dog Breed Classifier Project-Specific
 # Model weights (files are too large for Git)
-model/weights/
-*.h5
+# model/weights/
+# *.h5
 *.pkl
 *.pth
 
@@ -224,7 +224,7 @@ data/test/
 data/train/
 data/train_split/
 data/valid/
-app/main.py
+# app/main.py
 
 # Environment variables
 .env
